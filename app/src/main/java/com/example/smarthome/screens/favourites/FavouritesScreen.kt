@@ -1,4 +1,4 @@
-package com.example.smarthome.screens
+package com.example.smarthome.screens.favourites
 
 import androidx.compose.foundation.background
 import com.example.smarthome.R
@@ -18,9 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun FavouritesScreen() {
+fun FavouritesScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .background(Color.White)
@@ -63,9 +65,7 @@ fun FavouritesScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(
-
-            ){
+            Box{
                 Icon(
                     modifier = Modifier
                         .size(size = 128.dp),
@@ -108,7 +108,9 @@ fun FavouritesScreen() {
                 contentPadding = PaddingValues(0.dp),
                 colors = ButtonDefaults.buttonColors(Color.Blue),
                 elevation = ButtonDefaults.elevation(5.dp),
-                onClick = { /*TODO*/ }
+                onClick = {
+                    navController.navigate("select_routine")
+                }
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -123,5 +125,5 @@ fun FavouritesScreen() {
 @Preview
 @Composable
 fun FavouritesPreview() {
-    FavouritesScreen()
+    FavouritesScreen(rememberNavController())
 }
